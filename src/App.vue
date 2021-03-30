@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mx-4 rounded border chat">
+    <div class="mx-4 rounded chat">
       <div class="container-fluid" style="height: 100%">
         <div class="row" style="height: 100%">
           <StatusLog />
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <b-modal @ok="connect" id="modal-1" title="BootstrapVue">
+    <b-modal @ok="connect" id="modal-1" centered title="BootstrapVue">
       <b-form-group id="input-group-1" label="Nome">
         <b-form-input
           id="input-1"
@@ -87,15 +87,21 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background: #0d1418;
+}
+
+html {
+  background: #0d1418;
 }
 
 .chat {
   height: calc(100vh - 100px);
+  border: 1px solid rgba(241, 241, 242, 0.11);
 }
 </style>

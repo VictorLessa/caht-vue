@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row header-chat border-bottom align-items-center"
+    class="row header-chat align-items-center text-white"
     style="height: 50px"
   >
     <p class="mb-0 ml-2">
@@ -14,4 +14,9 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.header-chat {
+  background: #131c21;
+  border-bottom: 1px solid rgba(241, 241, 242, 0.11);
+}
+</style>

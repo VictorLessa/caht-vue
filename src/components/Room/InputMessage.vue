@@ -9,7 +9,7 @@
         placeholder="Escreva uma mensagem"
       />
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" @click="submit" type="button">
+        <button class="btn send-message" @click="submit" type="button">
           Enviar
         </button>
       </div>
@@ -41,5 +41,9 @@ export default {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+.send-message {
+  background: #131c21;
+  color: white;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="row chat-room">
+    <div class="bg"></div>
     <perfect-scrollbar>
       <ul class="list">
         <li
@@ -10,8 +11,15 @@
           "
         >
           <div class="card-message">
-            <p style="font-size: .8rem">{{ item.userName }}</p>
-            {{ item.message }}
+            <div class="mr-3">
+              <p class="mb-0" :style="`color: ${item.color}`">
+                {{ item.userName }}
+              </p>
+              <p class="mb-0" style="font-weight: 300">{{ item.message }}</p>
+            </div>
+            <div>
+              <span style="font-size: .7rem">{{ hour }}</span>
+            </div>
           </div>
         </li>
       </ul>
@@ -23,6 +31,14 @@
 <script>
 import InputMessage from "./InputMessage.vue";
 export default {
+  computed: {
+    hour() {
+      const date = new Date();
+      return `${date.getHours()}:${
+        date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
+      }`;
+    },
+  },
   components: {
     InputMessage,
   },
@@ -31,7 +47,6 @@ export default {
 
 <style scoped>
 .chat-room {
-  background: #f8f9fa !important;
   height: calc(100% - 50px);
   display: flex;
 }
@@ -46,22 +61,32 @@ export default {
   justify-content: flex-start;
   display: flex;
   text-align: left;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
 }
 .right {
   justify-content: flex-end;
   display: flex;
   text-align: right;
-  padding: 10px;
+  padding: 5px;
   width: 100%;
 }
 .card-message {
-  width: 50%;
-  border-radius: 10px;
-  padding: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  padding: 5px;
   color: white;
   background-color: #262d31;
+}
+.bg {
+  background-image: url("../../assets/fundoWpp.png");
+  height: calc(100% - 50px);
+  width: 100%;
+  opacity: 0.1;
+  position: absolute;
 }
 .ps {
   height: calc(100% - 50px);
