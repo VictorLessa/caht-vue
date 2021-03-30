@@ -54,7 +54,7 @@ export default {
   methods: {
     async connect() {
       const cliConfig = new CliConfig({
-        hostUri: "http://192.168.0.103:9898",
+        hostUri: process.env.VUE_APP_URL,
         username: this.userName,
         room: this.room,
       });
