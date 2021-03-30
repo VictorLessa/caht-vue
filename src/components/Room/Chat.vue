@@ -1,17 +1,21 @@
 <template>
   <div class="row chat-room">
-    <ul class="list">
-      <li
-        v-for="(item, index) in $store.state.messages"
-        :key="index"
-        :class="`${item.token != $store.state.currentToken ? 'right' : 'left'}`"
-      >
-        <div class="card-message">
-          <p style="font-size: .8rem">{{ item.userName }}</p>
-          {{ item.message }}
-        </div>
-      </li>
-    </ul>
+    <perfect-scrollbar>
+      <ul class="list">
+        <li
+          v-for="(item, index) in $store.state.messages"
+          :key="index"
+          :class="
+            `${item.token != $store.state.currentToken ? 'right' : 'left'}`
+          "
+        >
+          <div class="card-message">
+            <p style="font-size: .8rem">{{ item.userName }}</p>
+            {{ item.message }}
+          </div>
+        </li>
+      </ul>
+    </perfect-scrollbar>
     <InputMessage />
   </div>
 </template>
@@ -58,5 +62,9 @@ export default {
   padding: 10px;
   color: white;
   background-color: #262d31;
+}
+.ps {
+  height: calc(100% - 50px);
+  width: 100%;
 }
 </style>
