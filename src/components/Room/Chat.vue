@@ -1,10 +1,10 @@
 <template>
   <div class="row chat-room">
     <div class="bg"></div>
-    <perfect-scrollbar>
+    <perfect-scrollbar ref="scrollToMe">
       <ul class="list">
         <li
-          v-for="(item, index) in $store.state.messages"
+          v-for="(item, index) in messages"
           :key="index"
           :class="
             `${item.token != $store.state.currentToken ? 'right' : 'left'}`
@@ -18,7 +18,7 @@
               <p class="mb-0" style="font-weight: 300">{{ item.message }}</p>
             </div>
             <div>
-              <span style="font-size: .7rem">{{ hour }}</span>
+              <span style="font-size: .7rem">{{ hour() }}</span>
             </div>
           </div>
         </li>
@@ -31,7 +31,24 @@
 <script>
 import InputMessage from "./InputMessage.vue";
 export default {
-  computed: {
+  data() {
+    return {
+      messages: this.$store.state.messages,
+    };
+  },
+  watch: {
+    messages() {
+      this.scrollToElement();
+    },
+  },
+  methods: {
+    scrollToElement() {
+      const el = this.$el.querySelector(".ps");
+      if (el) {
+        console.log(el);
+        el.scrollTop = el.scrollHeight + 50;
+      }
+    },
     hour() {
       const date = new Date();
       return `${date.getHours()}:${
@@ -91,5 +108,7 @@ export default {
 .ps {
   height: calc(100% - 50px);
   width: 100%;
+
+  position: relative;
 }
 </style>

@@ -70,7 +70,7 @@ class SocketClient {
       this.vue.$store.dispatch("connected", data);
     });
     this.#serverConnection.on("newUserConnected", (data) => {
-      this.vue.$store.dispatch("connected", data);
+      this.vue.$store.dispatch("connected", [data]);
     });
     this.#serverConnection.on("disconnectUser", (data) => {
       this.vue.$store.dispatch("disconnected", data);

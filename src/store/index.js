@@ -32,10 +32,11 @@ export default new Vuex.Store({
       state.userDetails = userDetails;
     },
     disconnected(state, user) {
-      const index = state.userStatus.findIndex((el) => el.id == user.id);
-      if (index != -1) {
-        state.userStatus = state.userStatus.slice(index, 1);
-      }
+      const filter = state.userStatus.filter((el) => {
+        if (el.id != user.id) return el;
+      });
+
+      state.userStatus = filter;
     },
     connected(state, user) {
       state.userStatus = state.userStatus.concat(user);
